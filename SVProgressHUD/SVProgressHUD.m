@@ -13,6 +13,7 @@
 #import "SVIndefiniteAnimatedView.h"
 #import "SVProgressAnimatedView.h"
 #import "SVRadialGradientLayer.h"
+#import "UIView+Extension.h"
 
 NSString * const SVProgressHUDDidReceiveTouchEventNotification = @"SVProgressHUDDidReceiveTouchEventNotification";
 NSString * const SVProgressHUDDidTouchDownInsideNotification = @"SVProgressHUDDidTouchDownInsideNotification";
@@ -431,6 +432,7 @@ static const CGFloat SVProgressHUDLabelSpacing = 8.0f;
         
         _isInitializing = NO;
     }
+    [self insertShadow];
     return self;
 }
 
@@ -747,6 +749,12 @@ static const CGFloat SVProgressHUDLabelSpacing = 8.0f;
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
         __strong SVProgressHUD *strongSelf = weakSelf;
         if(strongSelf){
+            
+            // Disable user interaction
+            if (![[UIApplication sharedApplication] isIgnoringInteractionEvents]) {
+                [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
+            }
+            
             if(strongSelf.fadeOutTimer) {
                 strongSelf.activityCount = 0;
             }
@@ -1046,6 +1054,11 @@ static const CGFloat SVProgressHUDLabelSpacing = 8.0f;
                 } else {
                     animationsBlock();
                     completionBlock();
+                }
+                
+                // Enable user interaction
+                if ([[UIApplication sharedApplication] isIgnoringInteractionEvents]) {
+                    [[UIApplication sharedApplication] endIgnoringInteractionEvents];
                 }
             });
             

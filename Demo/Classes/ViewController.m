@@ -74,11 +74,13 @@
 - (void)show {
     [SVProgressHUD show];
     self.activityCount++;
+    [SVProgressHUD dismissWithDelay:2];
 }
 
 - (void)showWithStatus {
 	[SVProgressHUD showWithStatus:@"Doing Stuff"];
     self.activityCount++;
+    [SVProgressHUD dismissWithDelay:2];
 }
 
 static float progress = 0.0f;
