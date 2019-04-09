@@ -14,8 +14,9 @@
 -(void)insertShadow{
     self.layer.masksToBounds = NO;
     self.layer.shadowOffset = CGSizeMake(0, 0);
-    self.layer.shadowRadius = 5;
+    self.layer.shadowRadius = 4;
     self.layer.shadowOpacity = 0.5;
+    self.layer.shadowColor = [[UIColor lightGrayColor] CGColor];
 }
 
 @end
