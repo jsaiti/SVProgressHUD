@@ -67,10 +67,20 @@ static const CGFloat SVProgressHUDLabelSpacing = 8.0f;
 
 + (SVProgressHUD*)sharedView {
     static dispatch_once_t once;
-    
+    UIWindow *window ;
+    if (@available(iOS 13.0, *)) {
+        UIScene *scene = [[[[UIApplication sharedApplication] connectedScenes] allObjects] firstObject];
+        if([scene.delegate conformsToProtocol:@protocol(UIWindowSceneDelegate)]){
+            window = [(id <UIWindowSceneDelegate>)scene.delegate window];
+        }else{
+            window = [[[UIApplication sharedApplication]delegate]window];
+        }
+    } else {
+        window = [[[UIApplication sharedApplication]delegate]window];
+    }
     static SVProgressHUD *sharedView;
 #if !defined(SV_APP_EXTENSIONS)
-    dispatch_once(&once, ^{ sharedView = [[self alloc] initWithFrame:[[[UIApplication sharedApplication] delegate] window].bounds]; });
+    dispatch_once(&once, ^{ sharedView = [[self alloc] initWithFrame:[window bounds]];});
 #else
     dispatch_once(&once, ^{ sharedView = [[self alloc] initWithFrame:[[UIScreen mainScreen] bounds]]; });
 #endif
@@ -653,10 +663,32 @@ static const CGFloat SVProgressHUDLabelSpacing = 8.0f;
     double animationDuration = 0.0;
 
 #if !defined(SV_APP_EXTENSIONS) && TARGET_OS_IOS
-    self.frame = [[[UIApplication sharedApplication] delegate] window].bounds;
+    UIWindow *window ;
+    if (@available(iOS 13.0, *)) {
+        UIScene *scene = [[[[UIApplication sharedApplication] connectedScenes] allObjects] firstObject];
+        if([scene.delegate conformsToProtocol:@protocol(UIWindowSceneDelegate)]){
+            window = [(id <UIWindowSceneDelegate>)scene.delegate window];
+        }else{
+            window = [[[UIApplication sharedApplication]delegate]window];
+        }
+    } else {
+        window = [[[UIApplication sharedApplication]delegate]window];
+    }
+    self.frame = [window bounds];
     UIInterfaceOrientation orientation = UIApplication.sharedApplication.statusBarOrientation;
 #elif !defined(SV_APP_EXTENSIONS) && !TARGET_OS_IOS
-    self.frame= [UIApplication sharedApplication].keyWindow.bounds;
+    UIWindow *window ;
+    if (@available(iOS 13.0, *)) {
+        UIScene *scene = [[[[UIApplication sharedApplication] connectedScenes] allObjects] firstObject];
+        if([scene.delegate conformsToProtocol:@protocol(UIWindowSceneDelegate)]){
+            window = [(id <UIWindowSceneDelegate>)scene.delegate window];
+        }else{
+            window = [[[UIApplication sharedApplication]delegate]window];
+        }
+    } else {
+        window = [[[UIApplication sharedApplication]delegate]window];
+    }
+    self.frame= [window bounds];
 #else
     if (self.viewForExtension) {
         self.frame = self.viewForExtension.frame;
@@ -667,6 +699,7 @@ static const CGFloat SVProgressHUDLabelSpacing = 8.0f;
     UIInterfaceOrientation orientation = CGRectGetWidth(self.frame) > CGRectGetHeight(self.frame) ? UIInterfaceOrientationLandscapeLeft : UIInterfaceOrientationPortrait;
 #endif
 #endif
+
     
 #if TARGET_OS_IOS
     // Get keyboardHeight in regard to current state
@@ -1237,8 +1270,19 @@ static const CGFloat SVProgressHUDLabelSpacing = 8.0f;
     
     // Update frames
 #if !defined(SV_APP_EXTENSIONS)
-    CGRect windowBounds = [[[UIApplication sharedApplication] delegate] window].bounds;
-    _controlView.frame = windowBounds;
+    UIWindow *window ;
+      if (@available(iOS 13.0, *)) {
+          UIScene *scene = [[[[UIApplication sharedApplication] connectedScenes] allObjects] firstObject];
+          if([scene.delegate conformsToProtocol:@protocol(UIWindowSceneDelegate)]){
+              window = [(id <UIWindowSceneDelegate>)scene.delegate window];
+          }else{
+              window = [[[UIApplication sharedApplication]delegate]window];
+          }
+      } else {
+          window = [[[UIApplication sharedApplication]delegate]window];
+      }
+      CGRect windowBounds = [window bounds];
+      _controlView.frame = windowBounds;
 #else
     _controlView.frame = [UIScreen mainScreen].bounds;
 #endif
