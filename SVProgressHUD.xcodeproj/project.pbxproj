@@ -22,9 +22,7 @@
 		6A58C8EC1CAE62F400BF604D /* SVProgressAnimatedView.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A58C8EA1CAE62F400BF604D /* SVProgressAnimatedView.h */; };
 		6A58C8ED1CAE62F400BF604D /* SVProgressAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A58C8EB1CAE62F400BF604D /* SVProgressAnimatedView.m */; };
 		6A58C8EE1CAE62F400BF604D /* SVProgressAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A58C8EB1CAE62F400BF604D /* SVProgressAnimatedView.m */; };
-		EF13209C225B638F000C5130 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = EF13209B225B638F000C5130 /* UIView+Extension.m */; };
-		EF13209E225B6428000C5130 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = EF13209B225B638F000C5130 /* UIView+Extension.m */; };
-		EF13209F225B6526000C5130 /* UIView+Extension.h in Headers */ = {isa = PBXBuildFile; fileRef = EF13209A225B638F000C5130 /* UIView+Extension.h */; };
+		994D315F2433F29200234CF0 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 994D315E2433F29200234CF0 /* UIView+Extension.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -56,8 +54,8 @@
 		65F0220D15C858060030BBEF /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
 		6A58C8EA1CAE62F400BF604D /* SVProgressAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressAnimatedView.h; sourceTree = "<group>"; };
 		6A58C8EB1CAE62F400BF604D /* SVProgressAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressAnimatedView.m; sourceTree = "<group>"; };
-		EF13209A225B638F000C5130 /* UIView+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
-		EF13209B225B638F000C5130 /* UIView+Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
+		994D315D2433F29200234CF0 /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
+		994D315E2433F29200234CF0 /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,7 +123,8 @@
 		65F0220115C857EF0030BBEF /* SVProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
-				EF13209D225B63A5000C5130 /* Extensions */,
+				994D315D2433F29200234CF0 /* UIView+Extension.h */,
+				994D315E2433F29200234CF0 /* UIView+Extension.m */,
 				3CB14F9A1AFBCB57003C2641 /* SVRadialGradientLayer.h */,
 				3CB14F9B1AFBCB57003C2641 /* SVRadialGradientLayer.m */,
 				65F0220415C857EF0030BBEF /* SVProgressHUD.h */,
@@ -148,15 +147,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		EF13209D225B63A5000C5130 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				EF13209A225B638F000C5130 /* UIView+Extension.h */,
-				EF13209B225B638F000C5130 /* UIView+Extension.m */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -164,7 +154,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EF13209F225B6526000C5130 /* UIView+Extension.h in Headers */,
 				4A9D7DF31AB345E10039B273 /* SVProgressHUD.h in Headers */,
 				4A9D7DF41AB345E80039B273 /* SVIndefiniteAnimatedView.h in Headers */,
 				6A58C8EC1CAE62F400BF604D /* SVProgressAnimatedView.h in Headers */,
@@ -259,7 +248,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EF13209E225B6428000C5130 /* UIView+Extension.m in Sources */,
 				4A9D7DF11AB345DD0039B273 /* SVProgressHUD.m in Sources */,
 				3CB14F9E1AFBCB57003C2641 /* SVRadialGradientLayer.m in Sources */,
 				4A9D7DF21AB345DD0039B273 /* SVIndefiniteAnimatedView.m in Sources */,
@@ -271,7 +259,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EF13209C225B638F000C5130 /* UIView+Extension.m in Sources */,
+				994D315F2433F29200234CF0 /* UIView+Extension.m in Sources */,
 				65F0220715C857EF0030BBEF /* SVProgressHUD.m in Sources */,
 				3CB14F9D1AFBCB57003C2641 /* SVRadialGradientLayer.m in Sources */,
 				4A9D7DD11AB345540039B273 /* SVIndefiniteAnimatedView.m in Sources */,
